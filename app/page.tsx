@@ -83,7 +83,7 @@ export default function Home() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: process.env.NEXT_PUBLIC_APP_URL, // uses env variable
+        redirectTo: process.env.NEXT_PUBLIC_APP_URL, // uses the env variable
       },
     });
 
@@ -91,6 +91,7 @@ export default function Home() {
       console.log("Login error:", error.message);
     }
   };
+
 
 
   // Logout
