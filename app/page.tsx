@@ -80,8 +80,18 @@ export default function Home() {
 
   // Login
   const handleLogin = async () => {
-    await supabase.auth.signInWithOAuth({ provider: "google" });
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: process.env.NEXT_PUBLIC_APP_URL, // uses env variable
+      },
+    });
+
+    if (error) {
+      console.log("Login error:", error.message);
+    }
   };
+
 
   // Logout
   const handleLogout = async () => {
